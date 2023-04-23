@@ -37,7 +37,7 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="Control/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Button 1"
+text = "Playtest"
 
 [node name="Container4" type="Container" parent="Control/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)

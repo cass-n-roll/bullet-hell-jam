@@ -8,7 +8,7 @@ func _ready():
 	$Control/HBoxContainer/VBoxContainer/Exit.button_down.connect(exit)
 
 func button_1():
-	print("Button 1 :D")
+	get_tree().change_scene_to_file("res://Scenes/level.tscn")
 
 func button_2():
 	print("Button 2 :'(")
