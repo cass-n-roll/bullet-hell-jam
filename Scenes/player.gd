@@ -60,3 +60,8 @@ func _input(event):
 		if event.is_action_released("aim_up"): shoot_dir.y += 1
 		if event.is_action_pressed("aim_down"): shoot_dir.y += 1
 		if event.is_action_released("aim_down"): shoot_dir.y -= 1
+	
+	move_dir.x = clampf(move_dir.x, -1, 1)
+	move_dir.y = clampf(move_dir.y, -1, 1)
+	shoot_dir.x = clampf(shoot_dir.x, -1, 1)
+	shoot_dir.y = clampf(shoot_dir.y, -1, 1)
