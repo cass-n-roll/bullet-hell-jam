@@ -10,8 +10,8 @@ script = ExtResource("1_u5v6f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8fvhr")
 
-[node name="up" type="RayCast2D" parent="."]
-target_position = Vector2(0, -30)
+[node name="right" type="RayCast2D" parent="."]
+target_position = Vector2(30, 0)
 
 [node name="Debug" type="CanvasLayer" parent="."]
 
@@ -47,4 +47,14 @@ layout_mode = 2
 text = "Pos:"
 
 [node name="Pos" type="Label" parent="Debug/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Debug/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Debug/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Shooting:"
+
+[node name="Shooting" type="Label" parent="Debug/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
