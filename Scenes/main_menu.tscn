@@ -11,51 +11,51 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="Main" type="HBoxContainer" parent="Control"]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 alignment = 1
 
-[node name="Container" type="Container" parent="Control/HBoxContainer"]
+[node name="Container" type="Container" parent="Control/Main"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Main"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/Main/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
 horizontal_alignment = 1
 
-[node name="Container3" type="Container" parent="Control/HBoxContainer/VBoxContainer"]
+[node name="Container3" type="Container" parent="Control/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Control/HBoxContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="Control/Main/VBoxContainer"]
 layout_mode = 2
 text = "Playtest"
 
-[node name="Container4" type="Container" parent="Control/HBoxContainer/VBoxContainer"]
+[node name="Container4" type="Container" parent="Control/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="Control/HBoxContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="Control/Main/VBoxContainer"]
 layout_mode = 2
 text = "Button 2"
 
-[node name="Container5" type="Container" parent="Control/HBoxContainer/VBoxContainer"]
+[node name="Container5" type="Container" parent="Control/Main/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Exit" type="Button" parent="Control/HBoxContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="Control/Main/VBoxContainer"]
 layout_mode = 2
 text = "Exit
 "
 
-[node name="Container2" type="Container" parent="Control/HBoxContainer"]
+[node name="Container2" type="Container" parent="Control/Main"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2

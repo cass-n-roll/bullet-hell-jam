@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://5wt4nhmfp3d2"
+path="res://.godot/imported/Pink Floyd - Money (Official Music Video)--0kcet4aPpQ.ogg-abd09e37f9e67d19b6996cd9c8ec8656.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sfx/demomusic/Pink Floyd - Money (Official Music Video)--0kcet4aPpQ.ogg"
+dest_files=["res://.godot/imported/Pink Floyd - Money (Official Music Video)--0kcet4aPpQ.ogg-abd09e37f9e67d19b6996cd9c8ec8656.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

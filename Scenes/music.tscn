@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://2if0csd61xcg"]
+
+[ext_resource type="Script" path="res://Scenes/music.gd" id="1_163jo"]
+[ext_resource type="AudioStream" uid="uid://5wt4nhmfp3d2" path="res://Assets/sfx/demomusic/Pink Floyd - Money (Official Music Video)--0kcet4aPpQ.ogg" id="2_y73um"]
+[ext_resource type="AudioStream" uid="uid://hyq3b6c71v6q" path="res://Assets/sfx/demomusic/PSone demo menu song  Wherever, Whenever Forever [EzVEoYWkQps].ogg" id="3_nu5gd"]
+
+[node name="Music" type="Node"]
+script = ExtResource("1_163jo")
+
+[node name="menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_y73um")
+
+[node name="level1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nu5gd")
