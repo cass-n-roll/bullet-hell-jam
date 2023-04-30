@@ -1,7 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://d14t5wrlm35m6"]
+[gd_scene load_steps=6 format=3 uid="uid://d14t5wrlm35m6"]
 
-[ext_resource type="PackedScene" uid="uid://t7yoldtkw10t" path="res://Scenes/player.tscn" id="1_k83eq"]
+[ext_resource type="Script" path="res://Scenes/level.gd" id="1_jw1jc"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gup0l"]
 
-[node name="Player" parent="." instance=ExtResource("1_k83eq")]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_cdgxq"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jalqj"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7qoox"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_jw1jc")
+
+[node name="Boundaries" type="StaticBody2D" parent="."]
+
+[node name="North" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(0, 5)
+shape = SubResource("SegmentShape2D_gup0l")
+one_way_collision_margin = 0.0
+
+[node name="South" type="CollisionShape2D" parent="Boundaries"]
+shape = SubResource("SegmentShape2D_cdgxq")
+
+[node name="East" type="CollisionShape2D" parent="Boundaries"]
+shape = SubResource("SegmentShape2D_jalqj")
+
+[node name="West" type="CollisionShape2D" parent="Boundaries"]
+scale = Vector2(10, 1)
+shape = SubResource("SegmentShape2D_7qoox")
