@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal end_game
 
 const SPEED = 300.0
 const JOYSTICK_MOVE_THRESHOLD = 0.1
@@ -13,7 +14,10 @@ var shooting : bool = false
 func dbg_vec(vec):
 	return str(floorf(vec.x * 100)/100.0) + ", " + str(floorf(vec.y * 100)/100.0)
 
-func _physics_process(delta):
+func _on_bullet_hit():
+	emit_signal("end_game")
+
+func _physics_process(_delta):
 	$Debug/VBoxContainer/HBoxContainer/MoveDir.text = dbg_vec(move_dir)
 	$Debug/VBoxContainer/HBoxContainer2/ShootDir.text = dbg_vec(shoot_dir)
 	$Debug/VBoxContainer/HBoxContainer3/Pos.text = dbg_vec(position)

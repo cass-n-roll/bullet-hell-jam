@@ -25,8 +25,7 @@ func _ready():
 	init_boundaries()
 	# Update boundaries when resize
 	get_tree().root.connect("size_changed", init_boundaries)
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass

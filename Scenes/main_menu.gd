@@ -13,7 +13,9 @@ func button_1():
 
 func button_2():
 	print("Button 2 :'(")
-
-
+	
 func exit():
 	get_tree().quit()
+
+func _on_player_end_game():
+	exit()

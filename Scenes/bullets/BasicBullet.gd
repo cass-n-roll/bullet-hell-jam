@@ -1,7 +1,7 @@
 extends Node2D
 
 enum HitGroup {BULLET, PLAYER, SHIELD, OTHER = -1}
-
+signal bullet_hit
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -22,25 +22,25 @@ func check_hit_group(body: Node2D) -> HitGroup:
 				break
 	return hitgroup
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var bodies : Array = $RigidBody2D.get_colliding_bodies()
 	if bodies.size() > 1:
 		print("More than one collision for a bullet")
-	elif bodies.size() == 1:
-		print("found one")
-
+		
 	var hitted_body = null
 	var hitgroup : HitGroup = HitGroup.OTHER
 	for body in bodies:
-		print(body)
 		hitgroup = check_hit_group(body)
+		print(self, " hit ", body, " of group ", HitGroup.keys()[hitgroup])
 		if hitgroup != HitGroup.OTHER:
 			hitted_body = body
 			break
-	
-	if hitted_body != null and hitgroup != HitGroup.OTHER:
-		emit_signal("bullet_hit")
-	
+
+	if hitgroup == HitGroup.PLAYER:
+		get_tree().call_group("Player", "_on_bullet_hit")
+	if hitgroup == HitGroup.SHIELD:
+		get_tree().call_group("Shield", "_on_bullet_hit")
+
 	# Kill itself
 	match hitgroup:
 		HitGroup.PLAYER, HitGroup.SHIELD:
