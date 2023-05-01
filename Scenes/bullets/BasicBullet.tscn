@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b71nboou5hnxi"]
+
+[ext_resource type="Script" path="res://Scenes/bullets/BasicBullet.gd" id="1_g6ix4"]
+[ext_resource type="Texture2D" uid="uid://dhmq6llhf5i1v" path="res://bullet2.png" id="1_i2is8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ddexk"]
+radius = 7.15
+height = 28.0
+
+[node name="Bullet" type="Node2D" groups=["Bullets"]]
+script = ExtResource("1_g6ix4")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+max_contacts_reported = 5
+contact_monitor = true
+lock_rotation = true
+linear_velocity = Vector2(30, 0)
+angular_velocity = 1.0
+constant_force = Vector2(2, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_ddexk")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/CollisionShape2D"]
+rotation = 4.71239
+scale = Vector2(0.0566682, 0.056483)
+texture = ExtResource("1_i2is8")

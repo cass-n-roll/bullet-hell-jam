@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3tyiwnjggdf0"]
+[gd_scene load_steps=4 format=3 uid="uid://d3tyiwnjggdf0"]
 
 [ext_resource type="PackedScene" uid="uid://d14t5wrlm35m6" path="res://Scenes/level.tscn" id="1_fvwyg"]
 [ext_resource type="PackedScene" uid="uid://t7yoldtkw10t" path="res://Scenes/player.tscn" id="2_4ytjk"]
+[ext_resource type="PackedScene" uid="uid://b71nboou5hnxi" path="res://Scenes/bullets/BasicBullet.tscn" id="3_cmgqa"]
 
 [node name="Node" type="Node"]
 
@@ -9,3 +10,6 @@
 
 [node name="Player" parent="." instance=ExtResource("2_4ytjk")]
 position = Vector2(50, 50)
+
+[node name="Bullet" parent="." instance=ExtResource("3_cmgqa")]
+position = Vector2(435, 183)
