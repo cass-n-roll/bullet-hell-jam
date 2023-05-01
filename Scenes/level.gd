@@ -6,7 +6,7 @@ var screen_size
 
 # Called when the node enters the scene tree for the first time.
 func init_boundaries():
-	Music.play(Music.level1)
+	Music.play_sync(Music.level1)
 	# Y off set of 5 to see boundary
 	$Boundaries/North.shape.a = Vector2(0, 5)
 	$Boundaries/North.shape.b = Vector2(screen_size.x, 5)
