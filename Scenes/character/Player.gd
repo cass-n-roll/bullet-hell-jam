@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 
 signal end_game
 
@@ -23,10 +23,10 @@ func _physics_process(_delta):
 	$Debug/VBoxContainer/HBoxContainer3/Pos.text = dbg_vec(position)
 	$Debug/VBoxContainer/HBoxContainer4/Shooting.text = str(shooting)
 	
-	rotation = shoot_dir.angle()
-	velocity = move_dir * SPEED;
+	$CharacterBody2D.rotation = shoot_dir.angle()
+	$CharacterBody2D.velocity = move_dir * SPEED
 	
-	move_and_slide()
+	$CharacterBody2D.move_and_slide()
 
 
 func joy_axis_move(value):

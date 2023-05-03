@@ -11,6 +11,7 @@ height = 28.0
 script = ExtResource("1_g6ix4")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 2
 gravity_scale = 0.0
 max_contacts_reported = 5
 contact_monitor = true

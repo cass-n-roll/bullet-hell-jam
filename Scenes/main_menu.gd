@@ -8,6 +8,10 @@ func _ready():
 	$Control/Main/VBoxContainer/Button2.button_down.connect(button_2)
 	$Control/Main/VBoxContainer/Exit.button_down.connect(exit)
 
+func _on_character_end_game():
+	print("coucou")
+	get_tree().quit()
+
 func button_1():
 	get_tree().change_scene_to_file("res://Scenes/level.tscn")
 
