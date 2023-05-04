@@ -1,7 +1,39 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddgg1vel6b87"]
 
 [ext_resource type="Texture2D" uid="uid://cdty84e05ma3u" path="res://pirates_62_t.png" id="1_5as8g"]
-[ext_resource type="Script" path="res://Scenes/ennemies/Ennemy.gd" id="1_j8ehd"]
+
+[sub_resource type="GDScript" id="GDScript_6di8l"]
+script/source = "extends Node2D
+
+@export var shoot_interval : float 
+@export var shoot_force: float
+
+
+var bullet_scene = preload(\"res://Scenes/bullets/BasicBullet.tscn\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$ShootTimer.wait_time = shoot_interval
+	$ShootTimer.timeout.connect(_on_timer_timeout)
+
+func shoot():
+	var bullet = bullet_scene.instantiate()
+	
+	bullet.position = $BulletSpawnPosition.position
+	var impulse = to_global($RayCast2D.target_position).normalized() * shoot_force
+	bullet.apply_central_impulse(impulse)
+	print(impulse)
+	add_child(bullet)
+	
+
+func _on_timer_timeout():
+	shoot()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7mhmk"]
 radius = 3.53553
@@ -11,7 +43,7 @@ height = 12.7279
 position = Vector2(32, 39)
 rotation = 1.57079
 scale = Vector2(2.50877, 2.42225)
-script = ExtResource("1_j8ehd")
+script = SubResource("GDScript_6di8l")
 shoot_interval = 3.0
 shoot_force = 100.0
 
@@ -23,6 +55,7 @@ rotation = 0.785398
 shape = SubResource("CapsuleShape2D_7mhmk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.0429688, 0.0429687)
 texture = ExtResource("1_5as8g")
 
@@ -30,7 +63,7 @@ texture = ExtResource("1_5as8g")
 autostart = true
 
 [node name="BulletSpawnPosition" type="Marker2D" parent="."]
-position = Vector2(5.46979, -4.22418)
+position = Vector2(4.38465, -4.5412)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(10, -8)
+target_position = Vector2(10.3637, -10.3209)

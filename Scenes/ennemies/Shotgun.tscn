@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckxk1wttje8uy"]
+
+[ext_resource type="Script" path="res://Scenes/ennemies/Shotgun.gd" id="1_sbwkv"]
+[ext_resource type="Texture2D" uid="uid://cdty84e05ma3u" path="res://pirates_62_t.png" id="2_q8irl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7mhmk"]
+radius = 3.53553
+height = 12.7279
+
+[node name="Shotgun" type="Node2D"]
+position = Vector2(32, 39)
+rotation = 0.523598
+scale = Vector2(2.50877, 2.42225)
+script = ExtResource("1_sbwkv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = 0.785398
+shape = SubResource("CapsuleShape2D_7mhmk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.0429688, 0.0429687)
+texture = ExtResource("2_q8irl")
+
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="BulletSpawnPosition" type="Marker2D" parent="."]
+position = Vector2(4.58009, -4.16888)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(10, -8)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(13.3455, -0.829638)
+
+[node name="RayCast2D3" type="RayCast2D" parent="."]
+target_position = Vector2(7.85757, -12.3259)
+
+[node name="RayCast2D4" type="RayCast2D" parent="."]
+target_position = Vector2(12.0963, -3.89629)
+
+[node name="RayCast2D5" type="RayCast2D" parent="."]
+target_position = Vector2(5.62617, -13.8518)

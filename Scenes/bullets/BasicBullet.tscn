@@ -8,6 +8,7 @@ radius = 7.15
 height = 28.0
 
 [node name="Bullet" type="Node2D" groups=["Bullets"]]
+rotation = 1.5708
 script = ExtResource("1_g6ix4")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]

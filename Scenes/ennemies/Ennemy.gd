@@ -1,7 +1,9 @@
-extends Node2D
+extends "res://Scenes/ennemies/Ennemy.gd"
 
 @export var shoot_interval : float 
 @export var shoot_force: float
+
+@export 
 
 var bullet_scene = preload("res://Scenes/bullets/BasicBullet.tscn")
 
