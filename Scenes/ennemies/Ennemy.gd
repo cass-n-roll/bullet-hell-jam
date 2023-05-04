@@ -1,22 +1,24 @@
 extends Node2D
 
 @export var shoot_interval : float 
+@export var shoot_force: float
 
 var bullet_scene = preload("res://Scenes/bullets/BasicBullet.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Timer.wait_time = shoot_interval
-	self.connect("timeout", _on_timer_timeout)
+	$ShootTimer.wait_time = shoot_interval
+	$ShootTimer.timeout.connect(_on_timer_timeout)
 
 func shoot():
 	var bullet = bullet_scene.instantiate()
 	
 	bullet.position = $BulletSpawnPosition.position
-#	var impulse_direction = self.
-	bullet.apply_central_impulse()
-	
+	var impulse = to_global($RayCast2D.target_position).normalized() * shoot_force
+	bullet.apply_central_impulse(impulse)
+	print(impulse)
 	add_child(bullet)
+	
 
 func _on_timer_timeout():
 	shoot()

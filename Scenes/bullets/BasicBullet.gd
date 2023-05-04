@@ -6,6 +6,9 @@ signal bullet_hit
 func _ready():
 	pass
 
+func apply_central_impulse(impulse):
+	$RigidBody2D.apply_central_impulse(impulse)
+
 func check_hit_group(body: Node2D) -> HitGroup:
 	var hitgroup : HitGroup = HitGroup.OTHER
 	for group in body.get_groups():
