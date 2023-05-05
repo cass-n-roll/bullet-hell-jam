@@ -26,5 +26,7 @@ metadata/_edit_group_ = true
 [node name="CharacterBody2D" parent="Shield" index="0"]
 collision_mask = 2
 
+[connection signal="end_game" from="Player" to="." method="_on_player_end_game"]
+
 [editable path="Player"]
 [editable path="Shield"]

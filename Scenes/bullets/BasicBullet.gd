@@ -1,6 +1,6 @@
 extends Node2D
 
-enum HitGroup {BULLET, PLAYER, SHIELD, OTHER = -1}
+enum HitGroup {BULLET, PLAYER, SHIELD, WALL, OTHER = -1}
 signal bullet_hit
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +22,9 @@ func check_hit_group(body: Node2D) -> HitGroup:
 				break
 			"Shield":
 				hitgroup = HitGroup.SHIELD
+				break
+			"Wall":
+				hitgroup = HitGroup.WALL
 				break
 	return hitgroup
 
@@ -46,7 +49,8 @@ func _physics_process(_delta):
 
 	# Kill itself
 	match hitgroup:
-		HitGroup.PLAYER, HitGroup.SHIELD:
+		HitGroup.PLAYER, HitGroup.SHIELD, HitGroup.WALL:
 			hide()
 			queue_free()
+			
 		

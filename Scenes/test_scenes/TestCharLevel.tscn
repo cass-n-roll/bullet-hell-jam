@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dscbg5wvmkpx3"]
+[gd_scene load_steps=6 format=3 uid="uid://dscbg5wvmkpx3"]
 
 [ext_resource type="PackedScene" uid="uid://d14t5wrlm35m6" path="res://Scenes/level.tscn" id="1_fvwyg"]
 [ext_resource type="PackedScene" uid="uid://b71nboou5hnxi" path="res://Scenes/bullets/BasicBullet.tscn" id="3_cmgqa"]
 [ext_resource type="PackedScene" uid="uid://b38g0f6urqd7k" path="res://Scenes/main_menu.tscn" id="4_ifiir"]
 [ext_resource type="PackedScene" uid="uid://2lynjkfscspx" path="res://Scenes/character/Character.tscn" id="4_ytupq"]
+[ext_resource type="PackedScene" uid="uid://ddgg1vel6b87" path="res://Scenes/ennemies/Ennemy.tscn" id="5_omhni"]
 
 [node name="Node" type="Node"]
 
@@ -16,5 +17,9 @@ position = Vector2(435, 183)
 visible = false
 
 [node name="Character" parent="." instance=ExtResource("4_ytupq")]
+
+[node name="Ennemy" parent="." instance=ExtResource("5_omhni")]
+position = Vector2(902, 122)
+rotation = 3.86292
 
 [connection signal="end_game" from="Character" to="MainMenu" method="_on_character_end_game"]

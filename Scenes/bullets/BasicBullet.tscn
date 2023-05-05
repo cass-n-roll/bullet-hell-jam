@@ -19,7 +19,6 @@ contact_monitor = true
 lock_rotation = true
 linear_velocity = Vector2(30, 0)
 angular_velocity = 1.0
-constant_force = Vector2(2, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 scale = Vector2(0.5, 0.5)

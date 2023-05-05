@@ -20,9 +20,10 @@ func shoot():
 	var bullet = bullet_scene.instantiate()
 	
 	bullet.position = $BulletSpawnPosition.position
-	var impulse = to_global($RayCast2D.target_position).normalized() * shoot_force
+	var dir = to_global($RayCast2D.target_position) - $RayCast2D.global_position
+	var impulse = dir.normalized() * shoot_force
 	bullet.apply_central_impulse(impulse)
-	print(impulse)
+	print(impulse, $RayCast2D.target_position, to_global($RayCast2D.target_position), $RayCast2D.position, $RayCast2D.global_position)
 	add_child(bullet)
 	
 
@@ -55,7 +56,6 @@ rotation = 0.785398
 shape = SubResource("CapsuleShape2D_7mhmk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 scale = Vector2(0.0429688, 0.0429687)
 texture = ExtResource("1_5as8g")
 
@@ -66,4 +66,5 @@ autostart = true
 position = Vector2(4.38465, -4.5412)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(10.3637, -10.3209)
+exclude_parent = false
+target_position = Vector2(12.7553, -10.3209)
