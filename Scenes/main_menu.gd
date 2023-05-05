@@ -9,7 +9,6 @@ func _ready():
 	$Control/Main/VBoxContainer/Exit.button_down.connect(exit)
 
 func _on_character_end_game():
-	print("coucou")
 	get_tree().quit()
 
 func button_1():
