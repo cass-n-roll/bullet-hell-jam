@@ -14,6 +14,7 @@ func _physics_process(_delta):
 	if $Shield.is_picked:
 		$Shield/CharacterBody2D.global_position = $Player/CharacterBody2D/ShieldPosition.global_position
 
+
 func _input(event):
 	if event.is_action_pressed("shoot"):
 		trigger_shoot()

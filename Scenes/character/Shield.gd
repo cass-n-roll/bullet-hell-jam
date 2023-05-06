@@ -14,6 +14,8 @@ func _on_bullet_hit():
 	pass
 
 func get_picked_up():
+	$CharacterBody2D.linear_velocity = Vector2(0,0)
+	$CharacterBody2D.angular_velocity = 0
 	is_picked = true
 	$PickupTimer.start()
 
