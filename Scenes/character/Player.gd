@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 signal end_game
 signal shield_pickup_range
@@ -23,17 +23,17 @@ func _on_bullet_hit():
 func _physics_process(_delta):
 	debug_log()
 	
-	var overlapping_bodies = $CharacterBody2D/Area2D.get_overlapping_bodies()
+	var overlapping_bodies = $Area2D.get_overlapping_bodies()
 	for body in overlapping_bodies:
 		var groups = body.get_groups()
 		if "Shield" in groups:
 			emit_signal("shield_pickup_range")
 			break
 	
-	$CharacterBody2D.rotation = shoot_dir.angle()
-	$CharacterBody2D.velocity = move_dir * SPEED
+	rotation = shoot_dir.angle()
+	velocity = move_dir * SPEED
 	
-	$CharacterBody2D.move_and_slide()
+	move_and_slide()
 
 func pickup_shield():
 	pass

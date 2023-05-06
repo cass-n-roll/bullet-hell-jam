@@ -14,12 +14,6 @@ scale = Vector2(0.561618, 0.561618)
 shoot_power = 100.0
 metadata/_edit_group_ = true
 
-[node name="CharacterBody2D" parent="Player" index="1"]
-collision_mask = 2
-
-[node name="ShieldPosition" parent="Player/CharacterBody2D" index="2"]
-gizmo_extents = 120.2
-
 [node name="Shield" parent="." instance=ExtResource("3_b4wat")]
 position = Vector2(-118.464, -58.0523)
 scale = Vector2(0.293711, 0.293711)

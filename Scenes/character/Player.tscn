@@ -11,7 +11,8 @@ height = 21.0322
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8x15k"]
 size = Vector2(32.9982, 33.0168)
 
-[node name="Player" type="Node2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+motion_mode = 1
 script = ExtResource("1_q7gd2")
 
 [node name="Debug" type="CanvasLayer" parent="."]
@@ -61,38 +62,35 @@ text = "Shooting:"
 [node name="Shooting" type="Label" parent="Debug/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Player"]]
-motion_mode = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5.96046e-08, -5.96046e-08)
 scale = Vector2(0.141749, 0.144241)
 texture = ExtResource("2_x1nyp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, 12)
 rotation = 0.16988
 scale = Vector2(2.84858, 3.04296)
 shape = SubResource("CapsuleShape2D_7fv5y")
 
-[node name="ShieldPosition" type="Marker2D" parent="CharacterBody2D" groups=["Player"]]
+[node name="ShieldPosition" type="Marker2D" parent="." groups=["Player"]]
 position = Vector2(32, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/ShieldPosition"]
+[node name="Sprite2D" type="Sprite2D" parent="ShieldPosition"]
 visible = false
 position = Vector2(-12, 21)
 scale = Vector2(0.0664063, 0.0664063)
 texture = ExtResource("3_3kq0b")
 
-[node name="ShootDirection" type="RayCast2D" parent="CharacterBody2D"]
+[node name="ShootDirection" type="RayCast2D" parent="."]
 position = Vector2(14, 24)
 target_position = Vector2(50, 0)
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+[node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(45.0575, 25.29)
 input_pickable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(0.0887803, -0.153294)
 shape = SubResource("RectangleShape2D_8x15k")
 debug_color = Color(0.917647, 0.0588235, 0.682353, 0.419608)
