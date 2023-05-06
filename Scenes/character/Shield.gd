@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 
 @export var is_picked: bool = true
 @export var base_launch_force: float = 100
@@ -8,7 +8,7 @@ func shoot(impulse: Vector2):
 	if not is_picked:
 		return
 	is_picked = false
-	$CharacterBody2D.apply_central_impulse(impulse)	
+	apply_central_impulse(impulse)	
 
 func _on_bullet_hit():
 	pass
@@ -29,6 +29,6 @@ func dbg_vec(vec):
 
 func debug():
 	$Debug/HBoxContainer/ShieldPos.text = "local : " + dbg_vec(self.position) + " ; global : " + dbg_vec(self.global_position)
-	$Debug/HBoxContainer2/BodyPos.text = "local : " + dbg_vec($CharacterBody2D.position) + " ; global : " + dbg_vec($CharacterBody2D.global_position)
+	$Debug/HBoxContainer2/BodyPos.text = "local : " + dbg_vec(position) + " ; global : " + dbg_vec(global_position)
 	$Debug/HBoxContainer3/IsPickable.text = str(not is_picked)
 	$Debug/HBoxContainer4/Timer.text = str($PickupTimer.is_stopped())

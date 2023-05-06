@@ -3,20 +3,18 @@
 [ext_resource type="Script" path="res://Scenes/character/Shield.gd" id="1_v8jk5"]
 [ext_resource type="Texture2D" uid="uid://bd3by65fd1snt" path="res://shield.png" id="2_8jhgb"]
 
-[node name="Shield" type="Node2D" groups=["Shield"]]
-script = ExtResource("1_v8jk5")
-
-[node name="CharacterBody2D" type="RigidBody2D" parent="." groups=["Shield"]]
+[node name="Shield" type="RigidBody2D" groups=["Shield"]]
 gravity_scale = 0.0
 max_contacts_reported = 5
 contact_monitor = true
 can_sleep = false
+script = ExtResource("1_v8jk5")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D" groups=["Shield"]]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." groups=["Shield"]]
 scale = Vector2(2.72497, 2.72497)
 polygon = PackedVector2Array(5, -5, 6, 4, 0, 8, -6, 4, -5, -5)
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/CollisionPolygon2D"]
+[node name="Sprite2D" type="Sprite2D" parent="CollisionPolygon2D"]
 position = Vector2(9.53674e-07, 0.999999)
 scale = Vector2(0.090625, 0.090625)
 texture = ExtResource("2_8jhgb")
