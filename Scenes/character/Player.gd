@@ -1,6 +1,9 @@
 extends Node2D
 
 signal end_game
+signal shield_pickup_range
+
+@export var shoot_power: float = 1000
 
 const SPEED = 300.0
 const JOYSTICK_MOVE_THRESHOLD = 0.1
@@ -18,15 +21,22 @@ func _on_bullet_hit():
 	emit_signal("end_game")
 
 func _physics_process(_delta):
-	$Debug/VBoxContainer/HBoxContainer/MoveDir.text = dbg_vec(move_dir)
-	$Debug/VBoxContainer/HBoxContainer2/ShootDir.text = dbg_vec(shoot_dir)
-	$Debug/VBoxContainer/HBoxContainer3/Pos.text = dbg_vec(position)
-	$Debug/VBoxContainer/HBoxContainer4/Shooting.text = str(shooting)
+	debug_log()
+	
+	var overlapping_bodies = $CharacterBody2D/Area2D.get_overlapping_bodies()
+	for body in overlapping_bodies:
+		var groups = body.get_groups()
+		if "Shield" in groups:
+			emit_signal("shield_pickup_range")
+			break
 	
 	$CharacterBody2D.rotation = shoot_dir.angle()
 	$CharacterBody2D.velocity = move_dir * SPEED
 	
 	$CharacterBody2D.move_and_slide()
+
+func pickup_shield():
+	pass
 
 
 func joy_axis_move(value):
@@ -93,3 +103,10 @@ func _input(event):
 	move_dir.y = clampf(move_dir.y, -1, 1)
 	shoot_dir.x = clampf(shoot_dir.x, -1, 1)
 	shoot_dir.y = clampf(shoot_dir.y, -1, 1)
+
+
+func debug_log():
+	$Debug/VBoxContainer/HBoxContainer/MoveDir.text = dbg_vec(move_dir)
+	$Debug/VBoxContainer/HBoxContainer2/ShootDir.text = dbg_vec(shoot_dir)
+	$Debug/VBoxContainer/HBoxContainer3/Pos.text = dbg_vec(position)
+	$Debug/VBoxContainer/HBoxContainer4/Shooting.text = str(shooting)

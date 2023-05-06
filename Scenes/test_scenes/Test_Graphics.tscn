@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d14t5wrlm35m6" path="res://Scenes/level.tscn" id="1_ufnwn"]
 [ext_resource type="PackedScene" uid="uid://bxirvov18515m" path="res://Scenes/player.tscn" id="2_kkx1k"]
-[ext_resource type="PackedScene" path="res://Scenes/bullets/BasicBullet.tscn" id="3_og8wg"]
+[ext_resource type="PackedScene" uid="uid://b71nboou5hnxi" path="res://Scenes/bullets/BasicBullet.tscn" id="3_og8wg"]
 [ext_resource type="PackedScene" uid="uid://b38g0f6urqd7k" path="res://Scenes/main_menu.tscn" id="4_0pcrs"]
 
 [node name="Node" type="Node"]
@@ -17,5 +17,3 @@ position = Vector2(435, 183)
 
 [node name="MainMenu" parent="." instance=ExtResource("4_0pcrs")]
 visible = false
-
-[connection signal="end_game" from="Player" to="MainMenu" method="_on_player_end_game"]

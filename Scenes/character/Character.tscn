@@ -11,6 +11,7 @@ script = ExtResource("1_rr5em")
 
 [node name="Player" parent="." instance=ExtResource("3_rcilf")]
 scale = Vector2(0.561618, 0.561618)
+shoot_power = 100.0
 metadata/_edit_group_ = true
 
 [node name="CharacterBody2D" parent="Player" index="1"]
@@ -26,7 +27,11 @@ metadata/_edit_group_ = true
 [node name="CharacterBody2D" parent="Shield" index="0"]
 collision_mask = 2
 
+[node name="PickupTimer" parent="Shield" index="1"]
+wait_time = 0.3
+
 [connection signal="end_game" from="Player" to="." method="_on_player_end_game"]
+[connection signal="shield_pickup_range" from="Player" to="Shield" method="_on_player_shield_pickup_range"]
 
 [editable path="Player"]
 [editable path="Shield"]

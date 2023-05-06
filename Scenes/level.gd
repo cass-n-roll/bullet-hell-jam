@@ -11,14 +11,14 @@ func init_boundaries():
 	$Boundaries/North.shape.a = Vector2(0, 5)
 	$Boundaries/North.shape.b = Vector2(screen_size.x, 5)
 
-	$Boundaries/South.shape.a = Vector2(0, screen_size.y)
-	$Boundaries/South.shape.b = Vector2(screen_size.x, screen_size.y)
+	$Boundaries/South.shape.a = Vector2(0, screen_size.y - 5)
+	$Boundaries/South.shape.b = Vector2(screen_size.x, screen_size.y - 5)
 	
-	$Boundaries/East.shape.a = Vector2(screen_size.x, 0)
-	$Boundaries/East.shape.b = Vector2(screen_size.x, screen_size.y)
+	$Boundaries/East.shape.a = Vector2(screen_size.x - 5, 0)
+	$Boundaries/East.shape.b = Vector2(screen_size.x - 5, screen_size.y)
 
-	$Boundaries/West.shape.a = Vector2(0, 0)
-	$Boundaries/West.shape.b = Vector2(0, screen_size.y)
+	$Boundaries/West.shape.a = Vector2(5, 0)
+	$Boundaries/West.shape.b = Vector2(5, screen_size.y)
 
 func _ready():
 	screen_size = get_viewport_rect().size
