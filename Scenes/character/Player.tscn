@@ -9,6 +9,7 @@ radius = 5.96789
 height = 21.0322
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8x15k"]
+size = Vector2(32.9982, 33.0168)
 
 [node name="Player" type="Node2D" groups=["Player"]]
 script = ExtResource("1_q7gd2")
@@ -69,7 +70,6 @@ scale = Vector2(0.141749, 0.144241)
 texture = ExtResource("2_x1nyp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-visible = false
 position = Vector2(6, 12)
 rotation = 0.16988
 scale = Vector2(2.84858, 3.04296)
@@ -89,13 +89,10 @@ position = Vector2(14, 24)
 target_position = Vector2(50, 0)
 
 [node name="Area2D" type="Area2D" parent="CharacterBody2D"]
-visible = false
 scale = Vector2(45.0575, 25.29)
 input_pickable = false
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
-visible = false
 scale = Vector2(0.0887803, -0.153294)
 shape = SubResource("RectangleShape2D_8x15k")
 debug_color = Color(0.917647, 0.0588235, 0.682353, 0.419608)

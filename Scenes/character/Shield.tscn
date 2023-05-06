@@ -22,3 +22,50 @@ scale = Vector2(0.090625, 0.090625)
 texture = ExtResource("2_8jhgb")
 
 [node name="PickupTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Debug" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.08892, 1.28885)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Debug"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Debug/HBoxContainer"]
+layout_mode = 2
+text = "Shield Position : "
+
+[node name="ShieldPos" type="Label" parent="Debug/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Debug"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Debug/HBoxContainer2"]
+layout_mode = 2
+text = "Body Position : "
+
+[node name="BodyPos" type="Label" parent="Debug/HBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Debug"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Debug/HBoxContainer3"]
+layout_mode = 2
+text = "Is pickable : "
+
+[node name="IsPickable" type="Label" parent="Debug/HBoxContainer3"]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Debug"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Debug/HBoxContainer4"]
+layout_mode = 2
+text = "Timer : "
+
+[node name="Timer" type="Label" parent="Debug/HBoxContainer4"]
+layout_mode = 2

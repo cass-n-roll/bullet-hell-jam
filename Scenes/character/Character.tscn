@@ -21,14 +21,12 @@ collision_mask = 2
 gizmo_extents = 120.2
 
 [node name="Shield" parent="." instance=ExtResource("3_b4wat")]
-position = Vector2(72.6833, 0.47197)
+position = Vector2(-118.464, -58.0523)
+scale = Vector2(0.293711, 0.293711)
 metadata/_edit_group_ = true
 
 [node name="CharacterBody2D" parent="Shield" index="0"]
 collision_mask = 2
-
-[node name="PickupTimer" parent="Shield" index="1"]
-wait_time = 0.3
 
 [connection signal="end_game" from="Player" to="." method="_on_player_end_game"]
 [connection signal="shield_pickup_range" from="Player" to="Shield" method="_on_player_shield_pickup_range"]
