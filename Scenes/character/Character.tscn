@@ -15,12 +15,7 @@ shoot_power = 100.0
 metadata/_edit_group_ = true
 
 [node name="Shield" parent="." instance=ExtResource("3_b4wat")]
-position = Vector2(-118.464, -58.0523)
-scale = Vector2(0.293711, 0.293711)
 metadata/_edit_group_ = true
-
-[node name="CharacterBody2D" parent="Shield" index="0"]
-collision_mask = 2
 
 [connection signal="end_game" from="Player" to="." method="_on_player_end_game"]
 [connection signal="shield_pickup_range" from="Player" to="Shield" method="_on_player_shield_pickup_range"]
