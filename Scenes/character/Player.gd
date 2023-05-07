@@ -3,8 +3,6 @@ extends CharacterBody2D
 signal end_game
 signal shield_pickup_range
 
-@export var shoot_power: float = 1000
-
 const SPEED = 300.0
 const JOYSTICK_MOVE_THRESHOLD = 0.1
 const JOYSTICK_SHOOT_THRESHOLD = 0.15
@@ -14,6 +12,11 @@ var move_dir : Vector2 = Vector2(0, 0)
 var shoot_dir : Vector2 = Vector2(0, 0)
 var shooting : bool = false
 
+@onready var shield_pos = $ShieldPosition
+
+func _ready():
+	drag(false)
+
 func dbg_vec(vec):
 	return str(floorf(vec.x * 100)/100.0) + ", " + str(floorf(vec.y * 100)/100.0)
 
@@ -22,13 +25,6 @@ func _on_bullet_hit():
 
 func _physics_process(_delta):
 	debug_log()
-	
-	var overlapping_bodies = $Area2D.get_overlapping_bodies()
-	for body in overlapping_bodies:
-		var groups = body.get_groups()
-		if "Shield" in groups:
-			emit_signal("shield_pickup_range")
-			break
 	
 	rotation = shoot_dir.angle()
 	velocity = move_dir * SPEED
@@ -52,6 +48,14 @@ func joy_axis_shoot(value, original):
 			shooting = false
 			return original
 	return value
+
+func drag(drags):
+	if drags:
+		$DragZone.gravity_space_override = Area2D.SPACE_OVERRIDE_REPLACE
+	else:
+		$DragZone.gravity_space_override = Area2D.SPACE_OVERRIDE_DISABLED
+	$DragZone/CPUParticles2D.emitting = drags
+
 
 func _input(event):
 	if event is InputEventJoypadMotion:
@@ -94,7 +98,12 @@ func _input(event):
 			shoot_dir.y += 1
 		elif event.is_action_released("aim_down"):
 			shoot_dir.y -= 1
-
+		
+		if event.is_action_pressed("drag"):
+			drag(true)
+		elif event.is_action_released("drag"):
+			drag(false)
+		
 
 		if shoot_dir.length() < JOYSTICK_SHOOT_MIN_LENGTH:
 			shooting = false
@@ -110,3 +119,8 @@ func debug_log():
 	$Debug/VBoxContainer/HBoxContainer2/ShootDir.text = dbg_vec(shoot_dir)
 	$Debug/VBoxContainer/HBoxContainer3/Pos.text = dbg_vec(position)
 	$Debug/VBoxContainer/HBoxContainer4/Shooting.text = str(shooting)
+
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("Shield"):
+		shield_pickup_range.emit()

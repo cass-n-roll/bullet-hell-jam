@@ -4,20 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://bd3by65fd1snt" path="res://shield.png" id="2_8jhgb"]
 
 [node name="Shield" type="RigidBody2D" groups=["Shield"]]
-gravity_scale = 0.0
+collision_layer = 2
+collision_mask = 2
 max_contacts_reported = 5
 contact_monitor = true
 can_sleep = false
 script = ExtResource("1_v8jk5")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.59873e-06, 2.72497)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_8jhgb")
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." groups=["Shield"]]
 scale = Vector2(2.72497, 2.72497)
-polygon = PackedVector2Array(5, -5, 6, 4, 0, 8, -6, 4, -5, -5)
-
-[node name="Sprite2D" type="Sprite2D" parent="CollisionPolygon2D"]
-position = Vector2(9.53674e-07, 0.999999)
-scale = Vector2(0.090625, 0.090625)
-texture = ExtResource("2_8jhgb")
+polygon = PackedVector2Array(10, -12, 12, 6, 0, 15, -12, 6, -10, -12)
 
 [node name="PickupTimer" type="Timer" parent="."]
 wait_time = 0.3

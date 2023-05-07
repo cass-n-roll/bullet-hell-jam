@@ -2,13 +2,22 @@ extends RigidBody2D
 
 @export var is_picked: bool = true
 @export var base_launch_force: float = 100
+@export var shoot_power: float = 750
 # Called when the node enters the scene tree for the first time.
+
+var player = null
 
 func shoot(impulse: Vector2):
 	if not is_picked:
 		return
 	is_picked = false
-	apply_central_impulse(impulse)	
+	linear_velocity = impulse * shoot_power
+
+func _integrate_forces(state):
+	if not is_picked:
+		return
+	
+	state.transform.origin = player.global_position + player.shield_pos.position.rotated(player.rotation)
 
 func _on_bullet_hit():
 	pass

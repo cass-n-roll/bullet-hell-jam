@@ -5,16 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://c8ua1jo2ddk4g" path="res://Scenes/character/Player.tscn" id="3_rcilf"]
 
 [node name="Character" type="Node2D"]
-position = Vector2(251, 123)
-scale = Vector2(2.11878, 2.11878)
+position = Vector2(250, 250)
 script = ExtResource("1_rr5em")
 
 [node name="Player" parent="." instance=ExtResource("3_rcilf")]
 scale = Vector2(0.561618, 0.561618)
-shoot_power = 100.0
 metadata/_edit_group_ = true
 
 [node name="Shield" parent="." instance=ExtResource("3_b4wat")]
+gravity_scale = 0.04
 metadata/_edit_group_ = true
 
 [connection signal="end_game" from="Player" to="." method="_on_player_end_game"]

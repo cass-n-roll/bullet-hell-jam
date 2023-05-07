@@ -1,15 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8ua1jo2ddk4g"]
+[gd_scene load_steps=9 format=3 uid="uid://c8ua1jo2ddk4g"]
 
 [ext_resource type="Script" path="res://Scenes/character/Player.gd" id="1_q7gd2"]
+[ext_resource type="Texture2D" uid="uid://bjrxmpfqby6dt" path="res://Assets/gfx/sphere.png" id="2_jj2kw"]
 [ext_resource type="Texture2D" uid="uid://b84ip84avysru" path="res://Assets/Medieval Hooded Girl/PNG Sequences/Idle/Idle_002.png" id="2_x1nyp"]
 [ext_resource type="Texture2D" uid="uid://cdty84e05ma3u" path="res://pirates_62_t.png" id="3_3kq0b"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2t3hp"]
+radius = 386.0
+
+[sub_resource type="Gradient" id="Gradient_u8k2j"]
+offsets = PackedFloat32Array(0, 0.569697, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7fv5y"]
-radius = 5.96789
-height = 21.0322
+radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8x15k"]
-size = Vector2(32.9982, 33.0168)
+size = Vector2(128, 128)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
@@ -62,19 +69,48 @@ text = "Shooting:"
 [node name="Shooting" type="Label" parent="Debug/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 
+[node name="DragZone" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+gravity_space_override = 3
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = 4096.0
+linear_damp = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragZone"]
+shape = SubResource("CircleShape2D_2t3hp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="DragZone"]
+scale = Vector2(3, 3)
+amount = 128
+lifetime = 0.4
+randomness = 1.0
+texture = ExtResource("2_jj2kw")
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector2(0, 0)
+orbit_velocity_min = -0.2
+orbit_velocity_max = 0.2
+radial_accel_min = -750.0
+radial_accel_max = -100.0
+scale_amount_min = 0.02
+scale_amount_max = 0.08
+color_ramp = SubResource("Gradient_u8k2j")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5.96046e-08, -5.96046e-08)
-scale = Vector2(0.141749, 0.144241)
+scale = Vector2(0.246, 0.25)
 texture = ExtResource("2_x1nyp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, 12)
-rotation = 0.16988
 scale = Vector2(2.84858, 3.04296)
 shape = SubResource("CapsuleShape2D_7fv5y")
 
 [node name="ShieldPosition" type="Marker2D" parent="." groups=["Player"]]
-position = Vector2(32, 0)
+position = Vector2(64, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ShieldPosition"]
 visible = false
@@ -83,14 +119,16 @@ scale = Vector2(0.0664063, 0.0664063)
 texture = ExtResource("3_3kq0b")
 
 [node name="ShootDirection" type="RayCast2D" parent="."]
-position = Vector2(14, 24)
 target_position = Vector2(50, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(45.0575, 25.29)
+collision_layer = 2
+collision_mask = 2
 input_pickable = false
+priority = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(0.0887803, -0.153294)
 shape = SubResource("RectangleShape2D_8x15k")
 debug_color = Color(0.917647, 0.0588235, 0.682353, 0.419608)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

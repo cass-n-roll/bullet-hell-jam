@@ -2,17 +2,12 @@ extends Node2D
 
 signal end_game
 
-func trigger_shoot():
-	var dir_node = $Player/ShootDirection
-	var dir = to_global(dir_node.target_position) - dir_node.global_position
-	$Shield.shoot(dir.normalized() * $Player.shoot_power)
 
 func _ready():
-	$Shield.global_position = $Player/ShieldPosition.global_position
+	$Shield.player = $Player
 
-func _physics_process(_delta):
-	if $Shield.is_picked:
-		$Shield.global_position = $Player/ShieldPosition.global_position
+func trigger_shoot():
+	$Shield.shoot($Player/ShootDirection.target_position.normalized().rotated($Player.rotation))
 
 
 func _input(event):
